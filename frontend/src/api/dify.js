@@ -17,6 +17,14 @@ function headers(extra = {}) {
   }
 }
 
+
+function friendlyError(status, serverMessage) {
+  if (status >= 500) {
+    return `智能体服务暂时不可用（HTTP ${status}），请确认 Dify 已启动后重试`
+  }
+  return serverMessage || `HTTP ${status}`
+}
+
 async function request(path, { method = 'GET', body, signal } = {}) {
   const resp = await fetch(`${API_BASE}${path}`, {
     method,
@@ -30,7 +38,7 @@ async function request(path, { method = 'GET', body, signal } = {}) {
       const err = await resp.json()
       if (err.message) detail = err.message
     } catch { /* 保留状态码信息 */ }
-    throw new Error(detail)
+    throw new Error(friendlyError(resp.status, detail))
   }
   return resp.json()
 }
@@ -83,7 +91,7 @@ export async function streamChatMessage({
       const err = await resp.json()
       if (err.message) detail = err.message
     } catch { /* 保留状态码信息 */ }
-    throw new Error(detail)
+    throw new Error(friendlyError(resp.status, detail))
   }
 
   const reader = resp.body.getReader()
@@ -292,7 +300,7 @@ export function uploadFile(file, user, onProgress) {
           const err = JSON.parse(xhr.responseText)
           if (err.message) detail = err.message
         } catch { /* 保留状态码信息 */ }
-        reject(new Error(detail))
+        reject(new Error(xhr.status >= 500 ? friendlyError(xhr.status, detail) : detail))
       }
     }
     xhr.onerror = () => reject(new Error('网络错误，上传失败'))

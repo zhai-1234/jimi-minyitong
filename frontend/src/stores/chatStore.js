@@ -14,6 +14,7 @@ import {
 import { saveTurn } from '@/api/backend'
 
 const USER_KEY = 'jimi_user_id'
+const PARAMS_KEY = 'jimi_app_parameters_v1'
 
 /** 每个浏览器一个稳定用户标识，Dify 以 user 维度隔离会话 */
 function resolveUserId() {
@@ -66,7 +67,8 @@ export const useChatStore = defineStore('chat', {
     messages: [],
     isStreaming: false,
     suggestedQuestions: [], // 最近一条回答后的推荐追问
-    loadingHistory: false
+    loadingHistory: false,
+    initError: '' // 初始化失败提示（服务不可用等）
   }),
 
   getters: {
@@ -78,15 +80,25 @@ export const useChatStore = defineStore('chat', {
     /** 应用启动：拉取应用参数与会话列表，展示开场白 */
     async init() {
       if (!this.configured) return
+      this.initError = ''
       try {
         const [params, convs] = await Promise.all([
           getAppParameters(this.userId),
           getConversations(this.userId)
         ])
         this.parameters = params
+        // 缓存参数，服务短暂不可用时仍能展示上传/语音等入口
+        try { localStorage.setItem(PARAMS_KEY, JSON.stringify(params)) } catch { /* 忽略存储失败 */ }
         this.conversations = convs.data || []
       } catch (e) {
         console.error('[chat] 初始化失败:', e.message)
+        this.initError = String(e.message || '').includes('服务暂时不可用')
+          ? e.message
+          : `无法连接智能体服务：${e.message}`
+        try {
+          const cached = localStorage.getItem(PARAMS_KEY)
+          if (cached) this.parameters = JSON.parse(cached)
+        } catch { /* 忽略缓存解析失败 */ }
       }
       this.startNewConversation()
     },

@@ -24,6 +24,11 @@
           <button class="header-btn" type="button" title="新的对话" @click="startNew">＋</button>
         </header>
 
+        <div v-if="store.initError" class="service-banner">
+          <span>⚠️ {{ store.initError }}</span>
+          <button type="button" @click="store.init()">重试</button>
+        </div>
+
         <div v-if="sidebarOpen" class="backdrop mobile-only" @click="sidebarOpen = false"></div>
 
         <div ref="listRef" class="message-list" @scroll="onScroll">
@@ -197,6 +202,40 @@ function startNew() {
   border: 1px solid #f7dc6f;
   border-radius: 6px;
   padding: 2px 6px;
+}
+
+.service-banner {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #8a6d3b;
+  background: #fcf3cf;
+  border-bottom: 1px solid #f7dc6f;
+}
+
+.service-banner span {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.service-banner button {
+  flex-shrink: 0;
+  border: 1px solid #d9b44a;
+  background: #fff;
+  color: #8a6d3b;
+  border-radius: 6px;
+  padding: 2px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.service-banner button:hover {
+  background: #fff8dc;
 }
 
 .backdrop {

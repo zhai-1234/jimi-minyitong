@@ -138,7 +138,7 @@ const { recording, seconds, error: recorderError, start: startRecord, stop: stop
 
 /** 文件上传配置（来自 /parameters 的 file_upload） */
 const uploadConfig = computed(() => store.parameters?.file_upload || {})
-const canUpload = computed(() => uploadConfig.value.enabled === true)
+const canUpload = computed(() => uploadConfig.value.enabled !== false)
 const maxFiles = computed(() => uploadConfig.value.number_limits || 3)
 const sizeLimitMb = computed(() => uploadConfig.value.fileUploadConfig?.file_size_limit || 15)
 const allowedTypes = computed(() => uploadConfig.value.allowed_file_types || ['document'])
@@ -330,14 +330,14 @@ async function send(text) {
 
 <style scoped>
 .chat-input {
-  padding: 10px 16px 14px;
+  padding: 8px 16px 10px;
 }
 
 .suggest-row {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .chip {
@@ -446,11 +446,11 @@ async function send(text) {
 .input-box {
   display: flex;
   align-items: flex-end;
-  gap: 10px;
+  gap: 8px;
   background: #fff;
   border: 1px solid #d5dbdb;
-  border-radius: 14px;
-  padding: 8px 10px;
+  border-radius: 12px;
+  padding: 6px 10px;
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 
@@ -509,8 +509,8 @@ async function send(text) {
 }
 
 .tool-btn {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border: none;
   border-radius: 8px;
   background: none;
@@ -555,10 +555,10 @@ async function send(text) {
 
 .send-btn {
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border: none;
-  border-radius: 10px;
+  border-radius: 9px;
   background: #2c3e50;
   color: #fff;
   cursor: pointer;
