@@ -36,10 +36,9 @@ export function toPlainText(text) {
 export function renderWithCitations(text) {
   if (!text) return { html: '', citations: [] }
   const citations = []
-  const escaped = text.replace(/[&<>"']/g, (c) => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-  })[c])
-  const withMarks = escaped.replace(/\[citation:(\d+)\]/g, (_, n) => {
+  // 不预先转义：否则 Markdown 的 > 引用块会变成字面 &gt;；
+  // 模型输出的 HTML 由最后的 DOMPurify 统一清洗。
+  const withMarks = text.replace(/\[citation:(\d+)\]/g, (_, n) => {
     const idx = Number(n)
     if (!citations.includes(idx)) citations.push(idx)
     return `<sup class="citation-ref" data-citation="${idx}" title="查看来源 ${idx}">[${idx}]</sup>`

@@ -23,9 +23,9 @@ npm run dev:demo
 
 | 对话、引用角标与建议问题 | 政策来源面板（点击角标联动高亮） |
 | --- | --- |
-| ![对话界面](docs/images/demo-chat.jpg) | ![来源面板](docs/images/demo-sources.jpg) |
+| ![对话界面](docs/images/demo-chat.png) | ![来源面板](docs/images/demo-sources.png) |
 
-![文件上传与输入区](docs/images/demo-file-upload.jpg)
+![文件上传与输入区](docs/images/demo-file-upload.png)
 
 > 截图来自演示模式，回答为预置示例，不代表真实政策答复。
 
