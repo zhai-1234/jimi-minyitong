@@ -141,6 +141,9 @@ python run_eval.py --mode real --label baseline
 6. **中文关键词检索无结果**
    知识库 hybrid 中的 BM25 对中文实际返回空，当前效果主要由向量检索贡献；重排（gte-rerank）曾静默失败已关闭。
 
+7. **对话报 HTTP 500，或文件上传按钮消失**
+   先确认 Docker Desktop 与 Dify 容器已启动（`docker compose up -d`）。Dify 不可用时 Vite 代理会返回 500，`/parameters` 失败会导致上传入口缺失。前端会缓存上次应用参数并在顶部提示「无法连接智能体服务」，启动 Dify 后点「重试」即可恢复。
+
 ## 2026-11-13 目录调整
 
 `ai-vue/` → `frontend/`；`ai-vue/ai-spring/demo` → `backend/`；DSL 与建设方案移入 `dify/`；旧副本 `111/` 移入 `_archive/111-legacy/`。移动前后未删除任何文件，前端与 Spring Boot 的启动命令已在上文同步更新。
