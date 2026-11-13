@@ -119,7 +119,7 @@
 </template>
 
 <script setup>
-import { computed, nextTick, reactive, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
 import { useChatStore } from '@/stores/chatStore'
 import { uploadFile, audioToText } from '@/api'
 import { useRecorder } from '@/composables/useRecorder'
@@ -168,12 +168,26 @@ const acceptAttr = computed(() => {
   return [...new Set(exts)].join(',')
 })
 
+const MAX_INPUT_HEIGHT = 144 // 约 6 行，超过后显示内部滚动条
+
 function autoResize() {
   const el = textareaRef.value
   if (!el) return
   el.style.height = 'auto'
-  el.style.height = Math.min(el.scrollHeight, 160) + 'px'
+  const next = Math.min(el.scrollHeight, MAX_INPUT_HEIGHT)
+  el.style.height = `${next}px`
+  // 默认不显示滚动条；内容超过最大高度（多行溢出）时才显示
+  el.style.overflowY = el.scrollHeight > MAX_INPUT_HEIGHT ? 'auto' : 'hidden'
 }
+
+onMounted(() => {
+  autoResize()
+  window.addEventListener('resize', autoResize)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', autoResize)
+})
 
 function onEnter() {
   if (composing.value) return
@@ -447,14 +461,40 @@ async function send(text) {
 
 .textarea {
   flex: 1;
+  min-height: 24px;
   border: none;
   outline: none;
   resize: none;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.6;
-  max-height: 160px;
+  max-height: 144px;
+  padding: 2px 0;
+  overflow-y: hidden;
   font-family: inherit;
+  color: #2c3e50;
   background: transparent;
+  scrollbar-width: thin;
+  scrollbar-color: #c5ccd3 transparent;
+}
+
+.textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+.textarea::-webkit-scrollbar-thumb {
+  background: #c5ccd3;
+  border-radius: 3px;
+}
+
+.textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .textarea {
+    /* 避免 iOS 聚焦时自动放大页面 */
+    font-size: 16px;
+  }
 }
 
 .textarea::placeholder {
