@@ -19,6 +19,16 @@ npm run dev:demo
 
 演示模式覆盖流式输出、引用角标联动、来源面板、建议问题、朗读（浏览器语音合成）、附件上传（模拟），语音输入关闭（无真实识别服务）。
 
+## 界面预览
+
+| 对话、引用角标与建议问题 | 政策来源面板（点击角标联动高亮） |
+| --- | --- |
+| ![对话界面](docs/images/demo-chat.jpg) | ![来源面板](docs/images/demo-sources.jpg) |
+
+![文件上传与输入区](docs/images/demo-file-upload.jpg)
+
+> 截图来自演示模式，回答为预置示例，不代表真实政策答复。
+
 ## 架构（文字版）
 
 ```
@@ -105,7 +115,7 @@ python run_eval.py --mode real --label baseline
 | `backend/` | 可选 Spring Boot 问答日志服务（原 `ai-vue/ai-spring/demo`） |
 | `dify/` | 工作流 DSL `基米民易通beta1.3.0.yml`、智能体建设方案、索引补丁（`patches/`，含脚本与 compose 挂载） |
 | `evaluation/` | 测试集、评测脚本、结果与诊断快照 |
-| `docs/` | 项目说明、架构决策、简历材料 |
+| `docs/` | 项目说明、架构决策、简历材料、项目知识文档与界面截图 |
 | `_archive/` | 旧前端副本 `111-legacy/`、旧 IDE 元数据、数据库改动前备份 |
 | `社会救助/` | 原始政策文件（知识库来源，PDF 等） |
 | `基米补充材料/` | 知识库/工作流/粤语交流截图等过程材料 |
