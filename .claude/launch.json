@@ -12,6 +12,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["--prefix", "frontend", "run", "dev:demo", "--", "--port", "5174"],
       "port": 5174
+    },
+    {
+      "name": "frontend-pages-local",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "frontend", "run", "preview", "--", "--base", "/jimi-minyitong/", "--port", "4173"],
+      "port": 4173
     }
   ]
 }
