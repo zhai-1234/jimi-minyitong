@@ -1,0 +1,57 @@
+--- dify/patches/deal_dataset_vector_index_task.py.orig	2026-11-13 18:17:54.211715400 +0800
++++ dify/patches/deal_dataset_vector_index_task.py	2026-11-13 18:17:54.210171900 +0800
+@@ -1,3 +1,7 @@
++# [jimi-patch] Dify 1.9.1 fix
++# Snapshot DatasetDocument.id/doc_form before the bulk status update;
++# otherwise SQLAlchemy expires the instances and the subsequent loop raises
++# DetachedInstanceError during vector index rebuild.
+ import logging
+ import time
+ from typing import Literal
+@@ -98,6 +102,7 @@
+             ).all()
+             # add new index
+             if dataset_documents:
++                doc_meta = [(doc.id, doc.doc_form) for doc in dataset_documents]
+                 # update document status
+                 dataset_documents_ids = [doc.id for doc in dataset_documents]
+                 db.session.query(DatasetDocument).where(DatasetDocument.id.in_(dataset_documents_ids)).update(
+@@ -108,12 +113,12 @@
+                 # clean index
+                 index_processor.clean(dataset, None, with_keywords=False, delete_child_chunks=False)
+ 
+-                for dataset_document in dataset_documents:
++                for doc_id, doc_form in doc_meta:
+                     # update from vector index
+                     try:
+                         segments = (
+                             db.session.query(DocumentSegment)
+-                            .where(DocumentSegment.document_id == dataset_document.id, DocumentSegment.enabled == True)
++                            .where(DocumentSegment.document_id == doc_id, DocumentSegment.enabled == True)
+                             .order_by(DocumentSegment.position.asc())
+                             .all()
+                         )
+@@ -129,7 +134,7 @@
+                                         "dataset_id": segment.dataset_id,
+                                     },
+                                 )
+-                                if dataset_document.doc_form == IndexType.PARENT_CHILD_INDEX:
++                                if doc_form == IndexType.PARENT_CHILD_INDEX:
+                                     child_chunks = segment.get_child_chunks()
+                                     if child_chunks:
+                                         child_documents = []
+@@ -148,12 +153,12 @@
+                                 documents.append(document)
+                             # save vector index
+                             index_processor.load(dataset, documents, with_keywords=False)
+-                        db.session.query(DatasetDocument).where(DatasetDocument.id == dataset_document.id).update(
++                        db.session.query(DatasetDocument).where(DatasetDocument.id == doc_id).update(
+                             {"indexing_status": "completed"}, synchronize_session=False
+                         )
+                         db.session.commit()
+                     except Exception as e:
+-                        db.session.query(DatasetDocument).where(DatasetDocument.id == dataset_document.id).update(
++                        db.session.query(DatasetDocument).where(DatasetDocument.id == doc_id).update(
+                             {"indexing_status": "error", "error": str(e)}, synchronize_session=False
+                         )
+                         db.session.commit()

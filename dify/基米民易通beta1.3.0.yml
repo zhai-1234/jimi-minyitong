@@ -1,0 +1,540 @@
+app:
+  description: 社会救助政策智能问答（评测优化版：融合检索 + 引用溯源）
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 基米民易通beta1.3.0
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.6@dd589dc093c8084925858034ab5ec1fdf0d33819f43226c2f8c4a749a9acbbb2
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/wenxin:0.1.0@29923083c3ffe5d309a00289b1752cb5d2b83d189d3def2832535201f9a70497
+    version: null
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables:
+  - description: ''
+    id: 2a41ce74-5766-4c57-a533-01a61ee39bea
+    name: nextSearchTopic
+    selector:
+    - conversation
+    - nextSearchTopic
+    value: ''
+    value_type: string
+  - description: ''
+    id: 69ed60b4-a446-4418-a790-5c101f6aa0ed
+    name: shouldContinue
+    selector:
+    - conversation
+    - shouldContinue
+    value: ''
+    value_type: string
+  - description: ''
+    id: 1f085075-53d0-4f2a-a998-95bd0d6c681b
+    name: requestion
+    selector:
+    - conversation
+    - requestion
+    value: []
+    value_type: array[string]
+  - description: ''
+    id: f2f61053-a16b-4de5-95d8-4d9247f2d80a
+    name: findings
+    selector:
+    - conversation
+    - findings
+    value: []
+    value_type: array[string]
+  environment_variables:
+  - description: ''
+    id: 7f692b99-08ee-4df8-9b4b-3fa5ab26b393
+    name: os
+    selector:
+    - env
+    - os
+    value: '"utf-8"'
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - document
+      - image
+      - audio
+      - video
+      allowed_file_upload_methods:
+      - remote_url
+      - local_file
+      enabled: true
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: 你好，我是基米民易通智能客服，请问需要什么帮助~
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: true
+    suggested_questions:
+    - 申请低保的流程是什么？
+    - ' 申请低保需要满足什么条件？'
+    - 港澳居民在佛山遇到困难可以申请临时救助吗？
+    - 支出型救助和急难型救助有什么区别？
+    suggested_questions_after_answer:
+      enabled: true
+    text_to_speech:
+      enabled: true
+      language: zh-Hans
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17616636739630-source-1761561687791-target
+      selected: false
+      source: '17616636739630'
+      sourceHandle: source
+      target: '1761561687791'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1763271273271-source-1763273157378-target
+      selected: false
+      source: '1763271273271'
+      sourceHandle: source
+      target: '1763273157378'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1761561558854'
+        sourceType: iteration-start
+        targetType: document-extractor
+      id: 1761561558854start-source-1761561563141-target
+      selected: false
+      source: 1761561558854start
+      sourceHandle: source
+      target: '1761561563141'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: iteration
+      id: 1761292122423-source-1761561558854-target
+      selected: false
+      source: '1761292122423'
+      sourceHandle: source
+      target: '1761561558854'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: iteration
+        targetType: llm
+      id: 1761561558854-source-1763271273271-target
+      selected: false
+      source: '1761561558854'
+      sourceHandle: source
+      target: '1763271273271'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: knowledge-retrieval
+      id: 1763273157378-source-1763273371556-target
+      source: '1763273157378'
+      sourceHandle: source
+      target: '1763273371556'
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1763273371556-source-17616636739630-target
+      source: '1763273371556'
+      sourceHandle: source
+      target: '17616636739630'
+      targetHandle: target
+      type: custom
+    nodes:
+    - data:
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 51
+      id: '1761292122423'
+      position:
+        x: 30
+        y: 305.5
+      positionAbsolute:
+        x: 30
+        y: 305.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        error_handle_mode: terminated
+        height: 211
+        is_parallel: false
+        iterator_input_type: array[file]
+        iterator_selector:
+        - sys
+        - files
+        output_selector:
+        - '1761561563141'
+        - text
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1761561558854start
+        title: 迭代
+        type: iteration
+        width: 505
+      height: 211
+      id: '1761561558854'
+      position:
+        x: 331
+        y: 305.5
+      positionAbsolute:
+        x: 331
+        y: 305.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 505
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1761561558854start
+      parentId: '1761561558854'
+      position:
+        x: 60
+        y: 81.5
+      positionAbsolute:
+        x: 391
+        y: 387
+      selectable: false
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        is_array_file: false
+        iteration_id: '1761561558854'
+        selected: false
+        title: 文档提取器
+        type: document-extractor
+        variable_selector:
+        - '1761561558854'
+        - item
+      height: 91
+      id: '1761561563141'
+      parentId: '1761561558854'
+      position:
+        x: 204
+        y: 60
+      positionAbsolute:
+        x: 535
+        y: 365.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        answer: '{{#17616636739630.text#}}'
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 102
+      id: '1761561687791'
+      position:
+        x: 2665
+        y: 305.5
+      positionAbsolute:
+        x: 2665
+        y: 305.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1763273371556'
+          - result
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1761561558854'
+        memory:
+          query_prompt_template: '给你的内容{{#conversation.findings#}}
+
+            用户问题{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+            size: 50
+        model:
+          completion_params:
+            max_tokens: 900
+            temperature: 0.3
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 10099581-1fc5-42aa-a15c-fe5072a3a554
+          role: system
+          text: '根据{{#context#}}回答{{#sys.query#}}。
+
+
+            你是"基米民易通"社会救助政策咨询助手，服务困难群众、基层工作人员和社会组织。请遵守：
+
+            1. 只依据提供的知识库内容回答；知识库没有的内容坦诚说明，并建议咨询当地民政部门或拨打 12345。
+
+            2. 用与用户相同的语言回答，粤语提问用粤语表达习惯回复。
+
+            3. 标明政策依据的文件名称，并注明"根据现行政策规定"。
+
+            4. 回答控制在 350 字以内，结构为：一句话结论 → 2-4 条要点 → 办理渠道或下一步建议。
+
+            5. 不编造政策数字，标准、金额以当地公布为准。
+
+            6. 与社会救助无关的问题，礼貌拒答并引导回社会救助话题。
+
+            '
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output_enabled: false
+        title: LLM (1)
+        type: llm
+        vision:
+          enabled: false
+      height: 116
+      id: '17616636739630'
+      position:
+        x: 2140
+        y: 300
+      positionAbsolute:
+        x: 2140
+        y: 300
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        memory:
+          query_prompt_template: '用户输入:{{#sys.query#}}
+
+            文档提取：{{#sys.files#}}
+
+            输出必须纯粹，并且符合＜示例>的格式，不包含其他解
+
+            释内容。
+
+            至少拆解为4到6个子问题。
+
+            生成的问题必须与{{#1761561558854.output#}}有关'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+            size: 50
+        model:
+          completion_params:
+            max_tokens: 80
+            temperature: 0.1
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: e6f9be78-63b4-43ad-bc1b-0d9bfceea49c
+          role: system
+          text: '你是社会救助政策问答系统的检索词生成器。
+
+            任务：把用户问题拆解为 3 个用于知识库检索的简短查询词，覆盖问题的不同方面。
+
+            要求：
+
+            - 只输出 3 个查询，使用英文逗号分隔，不要编号、引号、换行或任何解释。
+
+            - 每个查询 6-20 个汉字。
+
+            - 若用户上传了文件，可结合文件内容：{{#1761561558854.output#}}
+
+            示例：
+
+            输入：如何申请低保
+
+            输出：低保申请条件,低保申请材料,低保办理流程
+
+            '
+        reasoning_format: tagged
+        selected: false
+        title: 问题分析
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1763271273271'
+      position:
+        x: 887.4285714285713
+        y: 305.5
+      positionAbsolute:
+        x: 887.4285714285713
+        y: 305.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        code: "def main(input_str: str, user_query: str, user_files: list = None) -> dict:\n    items = []\n    seen = set()\n    if input_str:\n        s = input_str.strip().strip('\"').strip('“').strip('”')\n        text = s.replace('，', ',').replace('、', ',').replace('；', ',').replace(';', ',')\n        for line in text.splitlines():\n            for part in line.split(','):\n                q = part.strip().strip('\"').strip('“').strip('”')\n                if q and q not in seen:\n                    seen.add(q)\n                    items.append(q)\n                    if len(items) >= 4:\n                        break\n            if len(items) >= 4:\n                break\n    base = (user_query or '').strip()\n    joined = '；'.join(items)\n    if user_files and joined:\n        query = (base + '；' + joined) if base else joined\n    else:\n        query = base or joined\n    return {'result': items, 'query': query}\n"
+        code_language: python3
+        outputs:
+          query:
+            children: null
+            type: string
+          result:
+            children: null
+            type: array[string]
+        selected: false
+        title: 数组
+        type: code
+        variables:
+        - value_selector:
+          - '1763271273271'
+          - text
+          value_type: string
+          variable: input_str
+        - value_selector:
+          - sys
+          - query
+          value_type: string
+          variable: user_query
+        - value_selector:
+          - sys
+          - files
+          value_type: array[file]
+          variable: user_files
+      height: 51
+      id: '1763273157378'
+      position:
+        x: 1197
+        y: 305.5
+      positionAbsolute:
+        x: 1197
+        y: 305.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        dataset_ids:
+        - c9sknZQ/hNKKaF0IT8Vi7br1F946ro8iedwxXMVUXNuhOFqUry4vhUdxl+QSXW7B
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1763273358652'
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          reranking_model:
+            model: bce-reranker-base
+            provider: langgenius/wenxin/wenxin
+          top_k: 4
+        query_variable_selector:
+        - '1763273157378'
+        - query
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索
+        type: knowledge-retrieval
+      height: 89
+      id: '1763273371556'
+      parentId: null
+      position:
+        x: 1900
+        y: 300
+      positionAbsolute:
+        x: 1900
+        y: 300
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    viewport:
+      x: -860.6910442326889
+      y: 25.328644914897154
+      zoom: 0.7639865176929719
+  rag_pipeline_variables: []

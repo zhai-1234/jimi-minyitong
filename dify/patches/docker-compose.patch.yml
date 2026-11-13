@@ -1,0 +1,19 @@
+# Dify 1.9.1 向量索引补丁的持久化挂载（推荐做法）。
+#
+# 用法（在 dify-main/docker 目录，与 docker-compose.yaml 同级）：
+#   export JIMI_PATCH_DIR=/absolute/path/to/基米民易通/dify/patches   # Windows PowerShell 用 $env:JIMI_PATCH_DIR=...
+#   docker compose -f docker-compose.yaml -f /absolute/path/to/基米民易通/dify/patches/docker-compose.patch.yml up -d
+#
+# 说明：
+# - 只覆盖单个 Python 文件，容器重建后依旧生效；
+# - 镜像升级（例如 1.9.1 → 1.10）后需要重新核对补丁是否仍适用；
+# - 若不想修改启动命令，也可在每次 up 之后运行 apply-index-patch.sh / .ps1。
+
+services:
+  api:
+    volumes:
+      - ${JIMI_PATCH_DIR:?请设置 JIMI_PATCH_DIR 为 dify/patches 的绝对路径}/deal_dataset_vector_index_task.py:/app/api/tasks/deal_dataset_vector_index_task.py:ro
+
+  worker:
+    volumes:
+      - ${JIMI_PATCH_DIR:?请设置 JIMI_PATCH_DIR 为 dify/patches 的绝对路径}/deal_dataset_vector_index_task.py:/app/api/tasks/deal_dataset_vector_index_task.py:ro

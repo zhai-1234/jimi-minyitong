@@ -1,0 +1,50 @@
+{"id": "sp-01", "category": "single_policy", "question": "申请最低生活保障（低保）需要满足哪些条件？", "expected_keywords": [["共同生活", "家庭成员"], ["人均收入", "收入低于", "低于当地"], ["财产"]], "expected_sources": ["最低生活保障"], "should_refuse": false}
+{"id": "sp-02", "category": "single_policy", "question": "申请低保需要准备哪些材料？", "expected_keywords": [["身份证", "户口簿"], ["收入", "证明"], ["申请", "声明", "委托"]], "expected_sources": ["最低生活保障"], "should_refuse": false}
+{"id": "sp-03", "category": "single_policy", "question": "低保的审核审批流程是怎样的？", "expected_keywords": [["申请"], ["审核", "核对", "调查"], ["公示"], ["审批"]], "expected_sources": ["最低生活保障业务流程", "最低生活保障"], "should_refuse": false}
+{"id": "sp-04", "category": "single_policy", "question": "特困人员救助供养的认定条件是什么？", "expected_keywords": [["无劳动能力"], ["无生活来源"], ["赡养", "抚养", "扶养"]], "expected_sources": ["特困人员救助供养"], "should_refuse": false}
+{"id": "sp-05", "category": "single_policy", "question": "特困人员有哪些供养方式？", "expected_keywords": [["集中供养"], ["分散供养"]], "expected_sources": ["特困人员救助供养"], "should_refuse": false}
+{"id": "sp-06", "category": "single_policy", "question": "临时救助适用于哪些情形？", "expected_keywords": [["急难"], ["支出"], ["突发", "意外", "疾病"]], "expected_sources": ["临时救助"], "should_refuse": false}
+{"id": "sp-07", "category": "single_policy", "question": "急难型救助和支出型救助有什么区别？", "expected_keywords": [["急难"], ["支出", "刚性支出"]], "expected_sources": ["临时救助"], "should_refuse": false}
+{"id": "sp-08", "category": "single_policy", "question": "什么是低保边缘家庭？", "expected_keywords": [["低保标准", "最低生活保障标准"], ["1.5倍", "低于"], ["财产"]], "expected_sources": ["最低生活保障边缘家庭"], "should_refuse": false}
+{"id": "sp-09", "category": "single_policy", "question": "支出型困难家庭的认定条件有哪些？", "expected_keywords": [["刚性支出"], ["收入", "财产"], ["因病", "因残", "因学", "疾病", "残疾", "就学"]], "expected_sources": ["支出型困难家庭"], "should_refuse": false}
+{"id": "sp-10", "category": "single_policy", "question": "流浪乞讨人员可以向哪里求助？", "expected_keywords": [["救助管理站", "救助管理机构", "救助站"], ["公安", "城管", "24小时"]], "expected_sources": ["流浪"], "should_refuse": false}
+{"id": "sp-11", "category": "single_policy", "question": "医疗救助的对象包括哪些人？", "expected_keywords": [["低保", "最低生活保障"], ["特困"], ["因病致贫", "支出型", "困难"]], "expected_sources": ["惠民清单"], "should_refuse": false}
+{"id": "sp-12", "category": "single_policy", "question": "教育救助主要有哪些形式？", "expected_keywords": [["助学", "学费", "减免", "补助"]], "expected_sources": ["惠民清单"], "should_refuse": false}
+{"id": "sp-13", "category": "single_policy", "question": "住房救助有哪些方式？", "expected_keywords": [["公租房", "住房补贴", "危房改造"]], "expected_sources": ["惠民清单"], "should_refuse": false}
+{"id": "sp-14", "category": "single_policy", "question": "就业救助提供哪些帮扶？", "expected_keywords": [["职业培训", "岗位", "公益性岗位", "创业"]], "expected_sources": ["惠民清单"], "should_refuse": false}
+{"id": "sp-15", "category": "single_policy", "question": "低保金一般多久发放一次？", "expected_keywords": [["按月", "每月"], ["发放"]], "expected_sources": ["最低生活保障"], "should_refuse": false}
+{"id": "mp-01", "category": "multi_policy", "question": "我家有重病患者，收入略高于低保线，可以申请哪些救助？", "expected_keywords": [["临时救助"], ["医疗救助"], ["支出型", "低保边缘", "因病致贫"]], "expected_sources": ["临时救助", "惠民清单", "支出型困难家庭"], "should_refuse": false}
+{"id": "mp-02", "category": "multi_policy", "question": "低保家庭的孩子上学可以享受哪些资助？", "expected_keywords": [["教育救助", "助学"], ["低保"]], "expected_sources": ["惠民清单", "最低生活保障"], "should_refuse": false}
+{"id": "mp-03", "category": "multi_policy", "question": "特困人员同时患重病，医疗费用怎么解决？", "expected_keywords": [["医疗救助"], ["特困"]], "expected_sources": ["惠民清单", "特困人员救助供养"], "should_refuse": false}
+{"id": "mp-04", "category": "multi_policy", "question": "低保边缘家庭可以申请临时救助吗？", "expected_keywords": [["临时救助"], ["边缘"]], "expected_sources": ["临时救助", "最低生活保障边缘家庭"], "should_refuse": false}
+{"id": "mp-05", "category": "multi_policy", "question": "因灾导致房屋损坏，可以申请哪些救助？", "expected_keywords": [["临时救助"], ["住房救助", "危房", "住房"], ["应急"]], "expected_sources": ["临时救助", "惠民清单"], "should_refuse": false}
+{"id": "mp-06", "category": "multi_policy", "question": "残疾人家庭可以享受哪些社会救助政策？", "expected_keywords": [["低保", "特困"], ["补贴", "护理"], ["就业", "康复"]], "expected_sources": ["惠民清单", "最低生活保障"], "should_refuse": false}
+{"id": "mp-07", "category": "multi_policy", "question": "外来务工人员在佛山遇到困难，可以申请临时救助吗？", "expected_keywords": [["临时救助"], ["居住地", "非户籍", "常住"], ["急难"]], "expected_sources": ["临时救助"], "should_refuse": false}
+{"id": "mp-08", "category": "multi_policy", "question": "脱贫不稳定户还有哪些帮扶政策？", "expected_keywords": [["低保", "特困"], ["监测", "帮扶"], ["临时救助"]], "expected_sources": ["惠民清单", "临时救助"], "should_refuse": false}
+{"id": "cl-01", "category": "colloquial", "question": "低保咋弄啊？", "expected_keywords": [["申请"], ["条件", "收入"], ["材料"]], "expected_sources": ["最低生活保障"], "should_refuse": false}
+{"id": "cl-02", "category": "colloquial", "question": "特困救助需要啥？", "expected_keywords": [["无劳动能力", "无生活来源"], ["申请"], ["材料"]], "expected_sources": ["特困人员救助供养"], "should_refuse": false}
+{"id": "cl-03", "category": "colloquial", "question": "家里突然出事没钱了，能找政府帮忙吗？", "expected_keywords": [["临时救助"], ["急难", "突发"], ["申请"]], "expected_sources": ["临时救助"], "should_refuse": false}
+{"id": "cl-04", "category": "colloquial", "question": "我想申请低保，要跑哪些部门？", "expected_keywords": [["乡镇", "街道"], ["村", "社区"], ["民政"]], "expected_sources": ["最低生活保障业务流程"], "should_refuse": false}
+{"id": "cl-05", "category": "colloquial", "question": "低保的钱什么时候到账？", "expected_keywords": [["按月", "每月"], ["发放"]], "expected_sources": ["最低生活保障"], "should_refuse": false}
+{"id": "cl-06", "category": "colloquial", "question": "救助申请被拒绝了怎么办？", "expected_keywords": [["复核", "申诉", "复议"], ["民政"]], "expected_sources": ["最低生活保障"], "should_refuse": false}
+{"id": "cl-07", "category": "colloquial", "question": "家里老人没人照顾，政府管不管？", "expected_keywords": [["特困"], ["供养"], ["集中供养", "分散供养"]], "expected_sources": ["特困人员救助供养"], "should_refuse": false}
+{"id": "cl-08", "category": "colloquial", "question": "生大病花了很多钱，有什么救助可以申请？", "expected_keywords": [["医疗救助"], ["临时救助"], ["支出型", "因病致贫"]], "expected_sources": ["临时救助", "惠民清单"], "should_refuse": false}
+{"id": "yue-01", "category": "cantonese", "question": "我屋企收入好低，想申请低保，要准备咩材料？", "expected_keywords": [["身份证", "户口簿"], ["收入", "证明"]], "expected_sources": ["最低生活保障"], "should_refuse": false}
+{"id": "yue-02", "category": "cantonese", "question": "点样申请临时救助啊？", "expected_keywords": [["临时救助"], ["申请"], ["镇", "街道"]], "expected_sources": ["临时救助"], "should_refuse": false}
+{"id": "yue-03", "category": "cantonese", "question": "特困人员每个月有几多钱？", "expected_keywords": [["标准"], ["当地", "公布"], ["供养"]], "expected_sources": ["特困人员救助供养"], "should_refuse": false}
+{"id": "yue-04", "category": "cantonese", "question": "我哋屋企老人行动不便，可唔可以上门办理？", "expected_keywords": [["上门", "代办"], ["村", "社区", "镇"]], "expected_sources": ["最低生活保障"], "should_refuse": false}
+{"id": "yue-05", "category": "cantonese", "question": "救助申请要等几耐？", "expected_keywords": [["审核", "审批"], ["时", "工作日"]], "expected_sources": ["最低生活保障业务流程"], "should_refuse": false}
+{"id": "yue-06", "category": "cantonese", "question": "唔系本地人可以申请救助吗？", "expected_keywords": [["居住地", "非户籍", "常住"], ["临时救助"]], "expected_sources": ["临时救助"], "should_refuse": false}
+{"id": "oos-01", "category": "out_of_scope", "question": "今天天气怎么样？", "expected_keywords": [], "expected_sources": [], "should_refuse": true}
+{"id": "oos-02", "category": "out_of_scope", "question": "帮我写一首关于春天的诗。", "expected_keywords": [], "expected_sources": [], "should_refuse": true}
+{"id": "oos-03", "category": "out_of_scope", "question": "最近有什么好看的电影推荐？", "expected_keywords": [], "expected_sources": [], "should_refuse": true}
+{"id": "oos-04", "category": "out_of_scope", "question": "怎么申请护照？", "expected_keywords": [], "expected_sources": [], "should_refuse": true}
+{"id": "oos-05", "category": "out_of_scope", "question": "股票怎么买才能赚钱？", "expected_keywords": [], "expected_sources": [], "should_refuse": true}
+{"id": "oos-06", "category": "out_of_scope", "question": "中国足球队什么时候能拿世界杯？", "expected_keywords": [], "expected_sources": [], "should_refuse": true}
+{"id": "oos-07", "category": "out_of_scope", "question": "帮我查一下我的银行卡余额。", "expected_keywords": [], "expected_sources": [], "should_refuse": true}
+{"id": "edge-01", "category": "edge_case", "question": "低保每个月能领多少钱？", "expected_keywords": [["标准"], ["当地", "公布", "民政"]], "expected_sources": ["最低生活保障"], "should_refuse": false}
+{"id": "edge-02", "category": "edge_case", "question": "2025年低保标准是多少？", "expected_keywords": [["标准"], ["公布", "调整"], ["民政", "政府"]], "expected_sources": ["最低生活保障"], "should_refuse": false}
+{"id": "edge-03", "category": "edge_case", "question": "低保和特困人员救助供养可以同时享受吗？", "expected_keywords": [["不能", "不得", "不可以"], ["特困"], ["低保"]], "expected_sources": ["特困人员救助供养", "最低生活保障"], "should_refuse": false}
+{"id": "edge-04", "category": "edge_case", "question": "在佛山南海区申请低保去哪里办？", "expected_keywords": [["镇", "街道"], ["公共服务", "民政"], ["村", "社区"]], "expected_sources": ["最低生活保障业务流程", "镇街"], "should_refuse": false}
+{"id": "edge-05", "category": "edge_case", "question": "申请材料不全怎么办？", "expected_keywords": [["补正", "一次性告知"], ["受理"]], "expected_sources": ["最低生活保障业务流程"], "should_refuse": false}
+{"id": "edge-06", "category": "edge_case", "question": "救助经办人员审核不公怎么投诉？", "expected_keywords": [["投诉"], ["民政"], ["12345"]], "expected_sources": ["最低生活保障"], "should_refuse": false}

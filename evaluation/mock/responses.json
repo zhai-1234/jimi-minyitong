@@ -1,0 +1,95 @@
+{
+  "sp-01": {
+    "answer": "根据现行政策规定，申请最低生活保障（低保）需同时满足：共同生活的家庭成员人均收入低于当地低保标准，且家庭财产状况符合当地规定，并具有当地户籍（或符合居住地申请条件）。",
+    "sources": [
+      {"document_name": "最低生活保障.png", "dataset_name": "社会救助政策库", "content": "最低生活保障……", "score": 0.93}
+    ],
+    "tokens": 812,
+    "latency_ms": 2100
+  },
+  "sp-02": {
+    "answer": "申请低保一般需要准备：身份证、户口簿（家庭成员信息）、家庭收入证明及财产状况声明，如实填报申请审批表；委托他人办理的还需提供委托书。",
+    "sources": [
+      {"document_name": "最低生活保障.png", "dataset_name": "社会救助政策库", "content": "申请材料……", "score": 0.9}
+    ],
+    "tokens": 764,
+    "latency_ms": 1900
+  },
+  "sp-03": {
+    "answer": "低保办理流程为：向乡镇（街道）提出申请，受理后开展家庭经济状况核对和入户调查，再经审批后发放低保金。",
+    "sources": [
+      {"document_name": "最低生活保障业务流程.png", "dataset_name": "社会救助政策库", "content": "审核审批流程……", "score": 0.88}
+    ],
+    "tokens": 705,
+    "latency_ms": 1750
+  },
+  "sp-04": {
+    "answer": "特困人员救助供养需同时符合：无劳动能力、无生活来源、无法定赡养抚养扶养义务人或者其法定义务人无履行义务能力。",
+    "sources": [
+      {"document_name": "特困人员救助供养.png", "dataset_name": "社会救助政策库", "content": "认定条件……", "score": 0.91}
+    ],
+    "tokens": 690,
+    "latency_ms": 1680
+  },
+  "sp-06": {
+    "answer": "临时救助适用于急难型情形（如突发意外、重大疾病等导致基本生活暂时出现严重困难）和支出型情形（因教育、医疗等刚性支出较大导致生活困难）。",
+    "sources": [
+      {"document_name": "临时救助.png", "dataset_name": "社会救助政策库", "content": "救助情形……", "score": 0.89}
+    ],
+    "tokens": 733,
+    "latency_ms": 1810
+  },
+  "mp-01": {
+    "answer": "收入略高于低保线的重病家庭，通常可以关注三类政策：一是医疗救助（对合规医疗费用进行救助），二是临时救助（突发重大疾病导致基本生活困难），三是支出型困难家庭或低保边缘家庭认定后的相关救助。建议携带病历和费用票据到镇（街道）公共服务中心咨询。",
+    "sources": [
+      {"document_name": "临时救助.png", "dataset_name": "社会救助政策库", "content": "支出型救助……", "score": 0.9},
+      {"document_name": "医疗救助.png", "dataset_name": "社会救助政策库", "content": "救助对象……", "score": 0.85}
+    ],
+    "tokens": 1120,
+    "latency_ms": 3400
+  },
+  "cl-01": {
+    "answer": "申请低保主要看家庭收入和财产是否符合条件，一般需要身份证、户口簿和收入证明等材料，可以到户籍所在地的村（社区）或镇（街道）提出申请。",
+    "sources": [
+      {"document_name": "最低生活保障.png", "dataset_name": "社会救助政策库", "content": "申请条件……", "score": 0.87}
+    ],
+    "tokens": 688,
+    "latency_ms": 1620
+  },
+  "yue-02": {
+    "answer": "申请临时救助一般由本人或家属提出，经审核符合条件的可以给予救助。",
+    "sources": [
+      {"document_name": "临时救助.png", "dataset_name": "社会救助政策库", "content": "申请程序……", "score": 0.8}
+    ],
+    "tokens": 512,
+    "latency_ms": 1450
+  },
+  "yue-03": {
+    "answer": "按规定发放。",
+    "sources": [
+      {"document_name": "特困人员救助供养.png", "dataset_name": "社会救助政策库", "content": "供养标准……", "score": 0.55}
+    ],
+    "tokens": 180,
+    "latency_ms": 900
+  },
+  "oos-01": {
+    "answer": "抱歉，我是基米民易通社会救助政策咨询助手，无法提供天气预报。如果您有低保、特困、临时救助等政策问题，我很乐意为您解答。",
+    "sources": [],
+    "tokens": 240,
+    "latency_ms": 820
+  },
+  "oos-02": {
+    "answer": "春天来了，柳枝抽出新芽，微风拂过河面，燕子衔来第一缕暖阳……",
+    "sources": [],
+    "tokens": 310,
+    "latency_ms": 980
+  },
+  "edge-01": {
+    "answer": "低保金标准由各地政府根据当地情况公布和调整，各区标准可能不同；具体金额请以当地民政部门最新公布的城乡低保标准为准。",
+    "sources": [
+      {"document_name": "最低生活保障.png", "dataset_name": "社会救助政策库", "content": "保障标准……", "score": 0.86}
+    ],
+    "tokens": 640,
+    "latency_ms": 1580
+  }
+}

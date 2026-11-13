@@ -1,0 +1,33 @@
+# 依赖与构建产物
+node_modules/
+dist/
+.vite/
+target/
+*.class
+*.jar
+*.war
+
+# 本地配置与密钥（绝不提交）
+.env
+.env.local
+.env.*.local
+frontend/.env
+
+# IDE 与系统文件
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# 归档、个人材料与大文件（保留在本地，不进入公开仓库）
+_archive/
+ku申请资料/
+社会救助/
+基米补充材料/
+基米补充材料.zip
+*.mp4
+
+# 日志与临时文件
+*.log
+npm-debug.log*
